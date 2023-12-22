@@ -13,7 +13,7 @@ from langchain.callbacks import get_openai_callback
 import os
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "https://pdf-chat-bot-mocha.vercel.app"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route("/members")
