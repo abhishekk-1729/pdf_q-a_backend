@@ -92,7 +92,7 @@ def process_pdf(text, query):
     if query:
         docs = VectorStore.similarity_search(query=query, k=3)
 
-        llm = OpenAI()
+        llm = OpenAI(model_name="gpt-3.5-turbo")
         chain = load_qa_chain(llm=llm, chain_type="stuff")
         with get_openai_callback() as cb:
             response = chain.run(input_documents=docs, question=query)
